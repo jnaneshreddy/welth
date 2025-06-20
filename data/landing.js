@@ -5,6 +5,8 @@ import {
   CreditCard,
   Globe,
   Zap,
+  ChartNoAxesCombined,
+  ReceiptIndianRupee,
 } from "lucide-react";
 
 // Stats Data
@@ -14,7 +16,7 @@ export const statsData = [
     label: "Active Users",
   },
   {
-    value: "$2B+",
+    value: "₹2B+",
     label: "Transactions Tracked",
   },
   {
@@ -30,13 +32,13 @@ export const statsData = [
 // Features Data
 export const featuresData = [
   {
-    icon: <BarChart3 className="h-8 w-8 text-blue-600" />,
+    icon: <ChartNoAxesCombined className="h-8 w-8 text-blue-600" />,
     title: "Advanced Analytics",
     description:
       "Get detailed insights into your spending patterns with AI-powered analytics",
   },
   {
-    icon: <Receipt className="h-8 w-8 text-blue-600" />,
+    icon: <ReceiptIndianRupee className="h-8 w-8 text-blue-600" />,
     title: "Smart Receipt Scanner",
     description:
       "Extract data automatically from receipts using advanced AI technology",
