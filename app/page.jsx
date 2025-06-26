@@ -94,9 +94,11 @@ export default function Home() {
           Ready to take charge of your finances? Let’s get started!
           </h2>
           <p className="text-blue-100 mb-8 max-w-2xl mx-auto">Join thousands who trust Welth to simplify and supercharge their financial journey!</p>
-          <Link href="/dashboard">
-          <Button size='lg'className="bg-white text-blue-600 hover:bg-blue-50 animate-bounce" > Get Started</Button>
-          </Link>
+          <Link href="/dashboard" passHref>
+  <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 animate-bounce">
+    Get Started
+  </Button>
+</Link>
         </div>
 
       </section>
