@@ -5,7 +5,7 @@ import { Plus } from 'lucide-react'
 import { getUserAccount } from '@/actions/dashboard'
 import AccountCard from "./_components/account-card";
 import { getCurrentBudget } from '@/actions/budget'
-import BudgetProgress from './_components/budget-progress'
+import {BudgetProgress} from './_components/budget-progress'
 
 async function DashboardPage ()  {
   const accounts = await getUserAccount();

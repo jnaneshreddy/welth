@@ -1,0 +1,12 @@
+ {/* Debug info - remove this in production */}
+        {/* <div className="mt-4 p-2 bg-gray-100 rounded text-xs">
+          <p>
+            <strong>Debug Info:</strong>
+          </p>
+          <p>Budget Amount: ₹{budgetAmount}</p>
+          <p>Current Expenses: ₹{expenseAmount}</p>
+          <p>Percentage: {percentUsed.toFixed(1)}%</p>
+          <p>
+            Calculation: ({expenseAmount} / {budgetAmount}) * 100
+          </p>
+        </div> */}
