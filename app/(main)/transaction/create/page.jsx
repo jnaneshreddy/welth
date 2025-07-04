@@ -4,7 +4,7 @@ import React from 'react'
 
 const CreateTransaction = () => {
   return(
-    <UnderConstructionPage />   
+    <UnderConstructionPage name={"Add Transaction Page"}/>   
   )
 }
 
