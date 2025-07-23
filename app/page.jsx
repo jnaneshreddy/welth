@@ -71,22 +71,13 @@ export default function Home() {
             {testimonialsData.map((testimonial,index) =>(
               <Card key={index} className="p-6">
                 <CardContent className="pt-4">
-                 <div className="flex items-center mb-4">
-                   <Image 
-                     src={testimonial.image} 
-                     width={40} 
-                     height={40}
-                     alt={testimonial.name} 
-                     className="rounded-full"
-                     unoptimized={true}
-                     onError={(e) => {
-                       e.target.src = '/fallback-avatar.png'; // fallback image
-                     }}
-                   />
-                   <div className="ml-4">
-                    <div className="font-semibold">{testimonial.name}</div>
-                    <div className="text-sm text-gray-600">{testimonial.role}</div>
-                   </div>
+                 <div className="flex items-center mb-4 "><Image src={testimonial.image} width={40} height={40}
+                 alt={testimonial.name} className="rounded-full"
+                 />
+                 <div className="ml-4">
+                  <div className="font-semibold">{testimonial.name}</div>
+                  <div className="text-sm test-gray-600">{testimonial.role}</div>
+                 </div>
                  </div>
                  <p className="pt-4 text-gray-600">{testimonial.quote}</p>
                 </CardContent>
