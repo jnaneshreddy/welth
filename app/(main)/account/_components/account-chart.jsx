@@ -4,6 +4,8 @@ import { useState, useMemo } from "react";
 import {
   BarChart,
   Bar,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -29,8 +31,14 @@ const DATE_RANGES = {
   ALL: { label: "All Time", days: null },
 };
 
+const CHART_TYPES = {
+  bar: { label: "Bar Chart" },
+  area: { label: "Area Chart" },
+};
+
 export function AccountChart({ transactions }) {
   const [dateRange, setDateRange] = useState("1M");
+  const [chartType, setChartType] = useState("bar");
 
   const filteredData = useMemo(() => {
     const range = DATE_RANGES[dateRange];
@@ -75,24 +83,121 @@ export function AccountChart({ transactions }) {
     );
   }, [filteredData]);
 
+  const renderChart = () => {
+    const commonProps = {
+      data: filteredData,
+      margin: { top: 10, right: 10, left: 10, bottom: 0 },
+    };
+
+    const commonAxisProps = {
+      fontSize: 12,
+      tickLine: false,
+      axisLine: false,
+    };
+
+    if (chartType === "area") {
+      return (
+        <AreaChart {...commonProps}>
+          <CartesianGrid strokeDasharray="3 3" vertical={false} />
+          <XAxis dataKey="date" {...commonAxisProps} />
+          <YAxis
+            {...commonAxisProps}
+            tickFormatter={(value) => `₹${value}`}
+          />
+          <Tooltip
+            formatter={(value) => [`₹${value}`, undefined]}
+            contentStyle={{
+              backgroundColor: "hsl(var(--popover))",
+              border: "1px solid hsl(var(--border))",
+              borderRadius: "var(--radius)",
+            }}
+          />
+          <Legend />
+          <Area
+            type="monotone"
+            dataKey="income"
+            name="Income"
+            stroke="#22c55e"
+            fill="#22c55e"
+            fillOpacity={0.3}
+          />
+          <Area
+            type="monotone"
+            dataKey="expense"
+            name="Expense"
+            stroke="#ef4444"
+            fill="#ef4444"
+            fillOpacity={0.3}
+          />
+        </AreaChart>
+      );
+    }
+
+    return (
+      <BarChart {...commonProps}>
+        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+        <XAxis dataKey="date" {...commonAxisProps} />
+        <YAxis
+          {...commonAxisProps}
+          tickFormatter={(value) => `₹${value}`}
+        />
+        <Tooltip
+          formatter={(value) => [`₹${value}`, undefined]}
+          contentStyle={{
+            backgroundColor: "hsl(var(--popover))",
+            border: "1px solid hsl(var(--border))",
+            borderRadius: "var(--radius)",
+          }}
+        />
+        <Legend />
+        <Bar
+          dataKey="income"
+          name="Income"
+          fill="#22c55e"
+          radius={[4, 4, 0, 0]}
+        />
+        <Bar
+          dataKey="expense"
+          name="Expense"
+          fill="#ef4444"
+          radius={[4, 4, 0, 0]}
+        />
+      </BarChart>
+    );
+  };
+
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-7">
         <CardTitle className="text-base font-normal">
           Transaction Overview
         </CardTitle>
-        <Select defaultValue={dateRange} onValueChange={setDateRange}>
-          <SelectTrigger className="w-[140px]">
-            <SelectValue placeholder="Select range" />
-          </SelectTrigger>
-          <SelectContent>
-            {Object.entries(DATE_RANGES).map(([key, { label }]) => (
-              <SelectItem key={key} value={key}>
-                {label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <div className="flex gap-2">
+          <Select defaultValue={chartType} onValueChange={setChartType}>
+            <SelectTrigger className="w-[120px]">
+              <SelectValue placeholder="Chart type" />
+            </SelectTrigger>
+            <SelectContent>
+              {Object.entries(CHART_TYPES).map(([key, { label }]) => (
+                <SelectItem key={key} value={key}>
+                  {label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Select defaultValue={dateRange} onValueChange={setDateRange}>
+            <SelectTrigger className="w-[140px]">
+              <SelectValue placeholder="Select range" />
+            </SelectTrigger>
+            <SelectContent>
+              {Object.entries(DATE_RANGES).map(([key, { label }]) => (
+                <SelectItem key={key} value={key}>
+                  {label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </CardHeader>
       <CardContent>
         <div className="flex justify-around mb-6 text-sm">
@@ -123,45 +228,7 @@ export function AccountChart({ transactions }) {
         </div>
         <div className="h-[300px]">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart
-              data={filteredData}
-              margin={{ top: 10, right: 10, left: 10, bottom: 0 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" vertical={false} />
-              <XAxis
-                dataKey="date"
-                fontSize={12}
-                tickLine={false}
-                axisLine={false}
-              />
-              <YAxis
-                fontSize={12}
-                tickLine={false}
-                axisLine={false}
-                tickFormatter={(value) => `₹${value}`}
-              />
-              <Tooltip
-                formatter={(value) => [`₹${value}`, undefined]}
-                contentStyle={{
-                  backgroundColor: "hsl(var(--popover))",
-                  border: "1px solid hsl(var(--border))",
-                  borderRadius: "var(--radius)",
-                }}
-              />
-              <Legend />
-              <Bar
-                dataKey="income"
-                name="Income"
-                fill="#22c55e"
-                radius={[4, 4, 0, 0]}
-              />
-              <Bar
-                dataKey="expense"
-                name="Expense"
-                fill="#ef4444"
-                radius={[4, 4, 0, 0]}
-              />
-            </BarChart>
+            {renderChart()}
           </ResponsiveContainer>
         </div>
       </CardContent>
