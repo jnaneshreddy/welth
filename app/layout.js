@@ -1,11 +1,13 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
+import ChatbotClientMount from "@/components/chatbot-client-mount";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner"
 
 
 const inter = Inter({subsets: ["latin"]});
+
 
 export const metadata = {
   title: "welth",
@@ -24,6 +26,8 @@ export default function RootLayout({ children }) {
         <main className="min-h-screen"> 
            {children}
         </main>
+  {/* Floating chat widget */}
+  <ChatbotClientMount />
          <Toaster richColors/>
         {/*footer*/}
         <footer className="bg-blue-600 text-white py-16">
