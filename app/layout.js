@@ -1,15 +1,13 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
-import dynamic from "next/dynamic";
+import ChatbotClientMount from "@/components/chatbot-client-mount";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner"
 
 
 const inter = Inter({subsets: ["latin"]});
 
-// Lazy-load the chat widget to avoid impacting TTFB
-const ChatbotWidget = dynamic(() => import("@/components/chatbot-widget"), { ssr: false });
 
 export const metadata = {
   title: "welth",
@@ -29,7 +27,7 @@ export default function RootLayout({ children }) {
            {children}
         </main>
   {/* Floating chat widget */}
-  <ChatbotWidget />
+  <ChatbotClientMount />
          <Toaster richColors/>
         {/*footer*/}
         <footer className="bg-blue-600 text-white py-16">
