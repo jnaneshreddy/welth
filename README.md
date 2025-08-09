@@ -5,12 +5,16 @@ ongoing welth application
 This app includes a lightweight Gemini-powered assistant that answers short questions about Welth (dashboards, budgets, transactions, receipt scanner, multi-account, multi-currency, and getting started).
 
 Setup:
-- Create `.env.local` and set `GOOGLE_GENERATIVE_AI_API_KEY`.
+- Create `.env` and set a Gemini API key (supported names below).
 - Start the dev server and use the floating chat button at bottom-right.
 
-Environment:
+Environment (any one of these works):
 ```
+# Preferred
 GOOGLE_GENERATIVE_AI_API_KEY=your_api_key_here
+
+# Or
+GEMINI_API_KEY=your_api_key_here
 ```
 
 API route: `app/api/chat/route.js`
