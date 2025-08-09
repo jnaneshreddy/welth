@@ -6,6 +6,8 @@ import {
   Bar,
   AreaChart,
   Area,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -34,6 +36,7 @@ const DATE_RANGES = {
 const CHART_TYPES = {
   bar: { label: "Bar Chart" },
   area: { label: "Area Chart" },
+  line: { label: "Line Chart" },
 };
 
 export function AccountChart({ transactions }) {
@@ -130,6 +133,44 @@ export function AccountChart({ transactions }) {
             fillOpacity={0.3}
           />
         </AreaChart>
+      );
+    }
+
+    if (chartType === "line") {
+      return (
+        <LineChart {...commonProps}>
+          <CartesianGrid strokeDasharray="3 3" vertical={false} />
+          <XAxis dataKey="date" {...commonAxisProps} />
+          <YAxis
+            {...commonAxisProps}
+            tickFormatter={(value) => `₹${value}`}
+          />
+          <Tooltip
+            formatter={(value) => [`₹${value}`, undefined]}
+            contentStyle={{
+              backgroundColor: "hsl(var(--popover))",
+              border: "1px solid hsl(var(--border))",
+              borderRadius: "var(--radius)",
+            }}
+          />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="income"
+            name="Income"
+            stroke="#22c55e"
+            strokeWidth={2}
+            dot={{ r: 4 }}
+          />
+          <Line
+            type="monotone"
+            dataKey="expense"
+            name="Expense"
+            stroke="#ef4444"
+            strokeWidth={2}
+            dot={{ r: 4 }}
+          />
+        </LineChart>
       );
     }
 
