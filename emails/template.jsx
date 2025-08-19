@@ -77,7 +77,7 @@ export default function EmailTemplate({
               <div style={styles.stat}>
                 <Text style={styles.text}>Net</Text>
                 <Text style={styles.heading}>
-                  ₹{data?.stats.totalIncome - data?.stats.totalExpenses.toFixed(2)}
+                  ₹{(data?.stats.totalIncome - data?.stats.totalExpenses).toFixed(2)}
                 </Text>
               </div>
             </Section>
