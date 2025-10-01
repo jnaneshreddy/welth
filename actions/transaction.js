@@ -76,7 +76,7 @@ export async function createTransaction(data) {
           amount: data.amount,
           description: data.description,
           accountId: data.accountId,
-          category: data.category, // ✅ Changed from categoryId to category
+          category: data.category, // Changed from categoryId to category
           date: new Date(data.date),
           userId: user.id,
           isRecurring: data.isRecurring || false,
@@ -164,7 +164,7 @@ export async function getUserTransactions(query = {}) {
 
 export async function scanRecipt(file) {
   try {
-    const model = genAi.getGenerativeModel({model:"gemini-1.5-flash"});
+    const model = genAi.getGenerativeModel({model:"models/gemini-2.5-flash-preview-05-20"});
 
     //converting file into array buffer
     const arrayBuffer = await file.arrayBuffer();
@@ -211,7 +211,7 @@ export async function scanRecipt(file) {
           amount:parseFloat(data.amount),
           date:new Date(data.date),
           description:data.description,
-          category:data.category, // ✅ Fixed: changed from date.category to data.category
+          category:data.category, //Fixed: changed from date.category to data.category
           merchantName:data.merchantName,
         };
       } catch (parseError) {
