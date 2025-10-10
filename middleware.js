@@ -17,14 +17,14 @@ const aj = arcjet({
     shield({
       mode: "LIVE",
     }),
-    detectBot({
-      mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
-      allow: [
-        "CATEGORY:SEARCH_ENGINE", // Google, Bing, etc
-        "GO_HTTP", // For Inngest
-        // See the full list at https://arcjet.com/bot-list
-      ],
-    }),
+    // detectBot({
+    //   mode: "LIVE", // will block requests. Use "DRY_RUN" to log only
+    //   allow: [
+    //     "CATEGORY:SEARCH_ENGINE", // Google, Bing, etc
+    //     "GO_HTTP", // For Inngest
+    //     // See the full list at https://arcjet.com/bot-list
+    //   ],
+    // }),
   ],
 });
 
