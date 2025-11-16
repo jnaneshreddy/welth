@@ -73,7 +73,7 @@ const AccountCard = ({account}) => {
           </div>
   </CardFooter>
   </Link>
-  /* { <div className="flex justify-end pr-10">
+    { /*<div className="flex justify-end pr-10">
         <Button
           variant="destructive"
           onClick={handleDelete}
@@ -81,7 +81,7 @@ const AccountCard = ({account}) => {
         >
           {isPending ? "Deleting..." : "Delete"}
         </Button>
-      </div> } */
+      </div>  */} 
 </Card>
   )
 }
