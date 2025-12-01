@@ -6,8 +6,8 @@ import { subDays } from "date-fns";
 // const ACCOUNT_ID = "f9752fd8-c1d1-4ebc-8343-1badb0f2b915";
 // const USER_ID = "7362370c-c3fd-4a9f-8dfc-9e3b3c944dd2";
 
-const ACCOUNT_ID = "c43a8724-7c2a-4184-b953-d0b7fb65e357";
-const USER_ID = "6033cad5-5957-45a3-a66e-ec4b41b14fac";
+const ACCOUNT_ID = "8cd3b944-f4ef-4cdf-9eca-2c4192ad8c01";
+const USER_ID = "f9e6c970-9b83-4c57-8f05-1fa0675201f8";
 
 // Categories with their typical amount ranges
 const CATEGORIES = {
